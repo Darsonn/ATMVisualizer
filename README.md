@@ -7,7 +7,7 @@ This project is a part of 3 applications:
 
 All credentials to connection with RestApi are in auto generated config file.
 
-__Default config's values:__
+__Default config:__
 ```
 {
   "serverHost": "http://localhost",

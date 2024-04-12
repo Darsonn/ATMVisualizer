@@ -1,0 +1,32 @@
+CREATE TABLE IF NOT EXISTS `clients`(
+    ID INTEGER PRIMARY KEY NOT NULL,
+    Name VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS `accounts`(
+    AccountID INTEGER PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    ClientID INTEGER NOT NULL,
+    AccountNumber VARCHAR(255) NOT NULL,
+    AccountBalance FLOAT NOT NULL,
+    FOREIGN KEY (ClientID) REFERENCES `clients`(ID)
+);
+
+CREATE TABLE IF NOT EXISTS `cards`(
+    CardID BIGINT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    AccountID INTEGER NOT NULL,
+    CardNumber VARCHAR(255) NOT NULL,
+    PIN INT NOT NULL,
+    ExpirationDate DATE NOT NULL,
+    FOREIGN KEY (AccountID) REFERENCES `accounts`(AccountID)
+);
+
+CREATE TABLE IF NOT EXISTS `transactions`(
+    TransactionID INTEGER PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    AccountID INTEGER,
+    CardID BIGINT,
+    TransactionDate DATE NOT NULL,
+    TransactionType VARCHAR(255) NOT NULL,
+    Amount DECIMAL(10,2) NOT NULL,
+    FOREIGN KEY (AccountID) REFERENCES `accounts`(AccountID),
+    FOREIGN KEY (CardID) REFERENCES `cards`(CardID)
+);

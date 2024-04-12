@@ -60,7 +60,7 @@ public class MainScreen {
             card.setAccount(account);
 
             try {
-                new AccountApi().updateAccount(account.getAccountId(), account); //TODO repair
+                new AccountApi().updateAccount(account.getAccountId(), account);
 
                 Transaction transaction = new Transaction();
                 transaction.setAccount(card.getAccount());
